@@ -7,7 +7,6 @@ class RestModel(models.Model):
     rest_id = models.AutoField(primary_key=True)
     rest_name = models.CharField(max_length=140, blank=False)
     rest_logo = models.URLField(blank=False)
-    # rest_location = models.PointField(default=0)
     rest_food_type = models.CharField(max_length=10)
     rest_rating = models.FloatField(default=0)
     rest_offer = models.CharField(blank=True, max_length=100)
@@ -23,3 +22,10 @@ class RestMenu(models.Model):
     dish_is_veg = models.BooleanField(default=True)
     dish_rating = models.FloatField(default=0)
     dish_desc = models.CharField(blank=False, max_length=300)
+
+
+class RestReviews(models.Model):
+    reviewed_rest = models.ForeignKey('RestModel', related_name='reviewed_rest', on_delete=models.CASCADE)
+    review_id = models.AutoField(primary_key=True, auto_created=True)
+    review_desc = models.CharField(blank=True, max_length=250)
+    rating_given = models.FloatField(max_length=5, blank=False)
