@@ -51,11 +51,14 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'KaartProject.urls'
 
 import os
-PROJECT_ROOT=os.path.realpath(os.path.dirname(__file__))
 
+PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
 
-MEDIA_ROOT=PROJECT_ROOT+'static/image/products/'
-MEDIA_URL='/media/'
+# MEDIA_ROOT=PROJECT_ROOT+'static/image/products'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

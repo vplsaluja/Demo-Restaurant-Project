@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from . import forms
+from . import models
 
 
 # def post_rest(request):
@@ -22,3 +23,8 @@ from . import forms
 #     else:
 #         print('error not valid data')
 #     return render(request, 'dish_form.html', {'dish_form': dish_form})
+
+def list_restaurants(request):
+    rest_list = models.RestModel.objects.all()
+    # list_rest =
+    return render(request, 'restaurant_list.html', {"rest_list": rest_list,})

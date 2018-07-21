@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurants</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <table>
+
+        <thead>
+        </thead>
+        {% for restaurant in rest_list %}
+        <tr>
+            <!--<td>{{restaurant.rest_name}}</td>-->
+            <td><img src="{{restaurant.rest_logo.url}}" height="200" width="200"/></td>
+            {% endfor %}
+        </tr>
+    </table>
+</div>
+</body>
+</html>
