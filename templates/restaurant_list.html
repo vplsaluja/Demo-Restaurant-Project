@@ -6,19 +6,46 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    <!--height: 300px; /* Should be removed. Only for demonstration */-->
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+</style>
 <body>
 <div class="container">
-    <table>
 
-        <thead>
-        </thead>
+    <div class="row">
         {% for restaurant in rest_list %}
-        <tr>
-            <!--<td>{{restaurant.rest_name}}</td>-->
-            <td><img src="{{restaurant.rest_logo.url}}" height="200" width="200"/></td>
-            {% endfor %}
-        </tr>
-    </table>
+        <div class="column">
+            <div class="card">
+                <img src="{{restaurant.rest_logo.url}}" height="200" width="200"/>
+                <div class="container">
+                    <h4><b>{{restaurant.rest_name}}</b></h4>
+                    <p>Food Type: {{restaurant.rest_food_type}}</p>
+                    <p>Rating: {{restaurant.rest_rating}}</p>
+                    <p>&#8377 {{restaurant.rest_expected_price}} For Two</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
 </div>
 </body>
 </html>
