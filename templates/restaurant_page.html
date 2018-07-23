@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <style>
@@ -14,20 +13,31 @@
     box-sizing: border-box;
 }
 
-.column {
+.col-1 {
     float: left;
-    width: 33.33%;
     overflow:hidden;
     padding: 10px;
-    background-color:#f00;
+    <!--background-color:#f00;-->
     <!--height: 300px; /* Should be removed. Only for demonstration */-->
 }
+.col-2 {
+    float: center;
+    overflow:hidden;
+    padding: 30px;
+    background-color:#ccc;
+    <!--height: 300px; /* Should be removed. Only for demonstration */-->
+}
+
 
 .row:after {
     content: "";
     display: table;
+    background-color:#ccc;
     clear: both;
 }
+
+
+
 
 
 
@@ -36,33 +46,14 @@
 <div class="container">
 
     <div class="row">
-        <div class="column">
-            <div class="card">
-                <script>
-$(document).ready(function(){
-    $("div.card").click(function(){
-        <!--alert("The paragraph was clicked.");-->
-
-        <!--You can use both of the function below for redirection of page-->
-
-        <!--window.location.assign("/restaurant/{{restaurant.rest_id}}");-->
-
-        window.location.href="/restaurant/{{restaurant.rest_id}}";
-    });
-});
-
-
-
-                </script>
-
-                <img src="{{rest_obj.rest_logo.url}}" height="200" width="200"/>
-                <div class="container">
-                    <h4><b>{{rest_obj.rest_name}}</b></h4>
-                    <p>Food Type: {{rest_obj.rest_food_type}}</p>
-                    <p>Rating: {{rest_obj.rest_rating}}</p>
-                    <p>&#8377 {{rest_obj.rest_expected_price}} For Two</p>
-                </div>
-            </div>
+        <div class="col-1">
+            <img src="{{rest_obj.rest_logo.url}}" height="200" width="200"/>
+        </div>
+        <div class="col-2">
+            <h4><b>{{rest_obj.rest_name}}</b></h4>
+            <p>Food Type: {{rest_obj.rest_food_type}}</p>
+            <p>Rating: {{rest_obj.rest_rating}}</p>
+            <p>&#8377 {{rest_obj.rest_expected_price}} For Two</p>
         </div>
     </div>
 
