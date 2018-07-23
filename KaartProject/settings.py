@@ -85,7 +85,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',  # 'django.contrib.gis.db.backends.mysql',
         'NAME': 'db_kart_data',
         'USER': 'root',
-        'PASSWORD': 'saluja@123',
+        'PASSWORD': 'saluja',
         # 'OPTIONS': {
         #     # Tell MySQLdb to connect with 'utf8mb4' character set
         #     'charset': 'utf8mb4',

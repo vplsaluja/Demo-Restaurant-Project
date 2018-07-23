@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Restaurants</title>
+    <title>{{rest_obj.rest_name}}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -31,23 +31,13 @@
 
 
 
-
-
-
-
-
-
-
 </style>
 <body>
 <div class="container">
 
     <div class="row">
-        {% for restaurant in rest_list %}
         <div class="column">
             <div class="card">
-
-
                 <script>
 $(document).ready(function(){
     $("div.card").click(function(){
@@ -57,25 +47,23 @@ $(document).ready(function(){
 
         <!--window.location.assign("/restaurant/{{restaurant.rest_id}}");-->
 
-        window.location.href="/restaurants/{{restaurant.rest_id}}";
+        window.location.href="/restaurant/{{restaurant.rest_id}}";
     });
 });
 
 
 
-
                 </script>
 
-                <img src="{{restaurant.rest_logo.url}}" height="200" width="200"/>
+                <img src="{{rest_obj.rest_logo.url}}" height="200" width="200"/>
                 <div class="container">
-                    <h4><b>{{restaurant.rest_name}}</b></h4>
-                    <p>Food Type: {{restaurant.rest_food_type}}</p>
-                    <p>Rating: {{restaurant.rest_rating}}</p>
-                    <p>&#8377 {{restaurant.rest_expected_price}} For Two</p>
+                    <h4><b>{{rest_obj.rest_name}}</b></h4>
+                    <p>Food Type: {{rest_obj.rest_food_type}}</p>
+                    <p>Rating: {{rest_obj.rest_rating}}</p>
+                    <p>&#8377 {{rest_obj.rest_expected_price}} For Two</p>
                 </div>
             </div>
         </div>
-        {% endfor %}
     </div>
 
 </div>

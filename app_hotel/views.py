@@ -26,5 +26,14 @@ from . import models
 
 def list_restaurants(request):
     rest_list = models.RestModel.objects.all()
-    # list_rest =
-    return render(request, 'restaurant_list.html', {"rest_list": rest_list,})
+    return render(request, 'restaurant_list.html', {"rest_list": rest_list, })
+
+
+def restaurant_page(request, pk):
+    print('inside method')
+    rest_obj = models.RestModel.objects.get(rest_id=pk)
+    if rest_obj is None:
+        print('404 not found')
+    else:
+        print('found')
+    return render(request, 'restaurant_page.html', {"rest_obj": rest_obj, })

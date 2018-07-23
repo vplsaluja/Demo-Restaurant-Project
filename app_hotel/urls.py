@@ -4,9 +4,8 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    # url(r'^rest/', views.post_rest, name='post_rest'),
-    # url(r'^dish/', views.post_dish, name='post_dish'),
-    url(r'^restaurants/', views.list_restaurants, name='list_rest'),
+    url(r'^restaurants/$', views.list_restaurants, name='list_rest'),
+    url(r'^restaurants/(?P<pk>[0-9]+)/$', views.restaurant_page, name='rest_page'),
 ]
 
 # +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
