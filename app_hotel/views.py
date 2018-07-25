@@ -37,3 +37,7 @@ def restaurant_page(request, pk):
     else:
         print('found')
     return render(request, 'restaurant_page.html', {"rest_obj": rest_obj, })
+
+
+def load_home(request):
+    return render(request, 'home-page.html')
