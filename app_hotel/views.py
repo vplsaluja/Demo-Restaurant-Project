@@ -40,4 +40,4 @@ def restaurant_page(request, pk):
 
 
 def load_home(request):
-    return render(request, 'home-page.html')
+    return render(request, 'index.html')
