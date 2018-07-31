@@ -16,10 +16,11 @@
 
 .column {
     float: left;
-    width: 33.33%;
+    width: 30%;
     overflow:hidden;
     padding: 10px;
-    background-color:#f00;
+    margin:10px;
+    background-color:#ccc;
     <!--height: 300px; /* Should be removed. Only for demonstration */-->
 }
 
@@ -33,11 +34,6 @@
 
 
 
-
-
-
-
-
 </style>
 <body>
 <div class="container">
@@ -45,14 +41,13 @@
     <div class="row">
         {% for restaurant in rest_list %}
         <div class="column">
-            <div class="card">
+            <div class="card-{{restaurant.rest_id}}">
 
 
                 <script>
 $(document).ready(function(){
-    $("div.card").click(function(){
-        <!--alert("The paragraph was clicked.");-->
-
+    $("div.card-{{restaurant.rest_id}}").click(function(){
+        <!--alert("The paragraph was clicked."+{{restaurant.rest_id}});-->
         <!--You can use both of the function below for redirection of page-->
 
         <!--window.location.assign("/restaurant/{{restaurant.rest_id}}");-->
@@ -60,6 +55,10 @@ $(document).ready(function(){
         window.location.href="/restaurants/{{restaurant.rest_id}}";
     });
 });
+
+
+
+
 
 
 

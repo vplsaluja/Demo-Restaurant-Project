@@ -37,6 +37,16 @@
 }
 
 
+.column {
+    float: left;
+    width: 30%;
+    overflow:hidden;
+    padding: 10px;
+    margin:10px;
+    background-color:#ccc;
+    <!--height: 300px; /* Should be removed. Only for demonstration */-->
+}
+
 
 
 
@@ -56,6 +66,31 @@
             <p>&#8377 {{rest_obj.rest_expected_price}} For Two</p>
         </div>
     </div>
+
+    {% for dish in dish_list %}
+    <div class="row">
+
+        {% if dish.dish_logo.url != None %}
+        <div class="col-1">
+            <img src="{{dish.dish_logo.url}}" height="200" width="200"/>
+        </div>
+        {% endif %}
+
+        <div class="column">
+            <p>Dish Name: {{dish.dish_name}}</p>
+            <p>Price: &#8377 {{dish.dish_price}} </p>
+            {% if dish.dish_is_veg == True %}
+            <p>Veg</p>
+            {% else %}
+            <p>Non Veg</p>
+            {% endif %}
+            <p>Rating: {{dish.dish_rating}}</p>
+            <p>Description: {{dish.dish_desc}}</p>
+
+        </div>
+
+    </div>
+    {% endfor %}
 
 </div>
 </body>

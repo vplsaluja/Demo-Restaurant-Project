@@ -18,7 +18,7 @@ class RestMenu(models.Model):
     related_rest = models.ForeignKey('RestModel', related_name="related_rest", on_delete=models.DO_NOTHING)
     dish_id = models.AutoField(primary_key=True)
     dish_name = models.CharField(blank=False, max_length=200)
-    dish_logo = models.ImageField(upload_to='gallery')
+    dish_logo = models.ImageField(upload_to='gallery', blank=True)
     dish_price = models.FloatField(blank=False)
     dish_is_veg = models.BooleanField(default=True)
     dish_rating = models.FloatField(default=0)
