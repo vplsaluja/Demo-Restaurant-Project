@@ -14,11 +14,11 @@ def restaurant_page(request, pk):
     dish_list = list(models.RestMenu.objects.filter(related_rest=pk))
     if not request.COOKIES.get('name'):
         print('cookie not found')
-        response = HttpResponse('setting cookie')
-        response.set_cookie('name', 'vipul')
-        return response
+        # response = HttpResponse('setting cookie')
+        # response.set_cookie('name', 'vipul')
+        # return response
     else:
-        print("Cookie is {}".format(request.COOKIES.get('name')))
+        print("Cookie in dish is  {}".format(request.COOKIES.get('added_dish')))
     if rest_obj is None:
         print('404 not found')
     else:
