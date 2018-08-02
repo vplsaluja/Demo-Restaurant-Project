@@ -45,15 +45,6 @@
     margin:10px;
     background-color:#0ff;
 }
-
-
-
-
-
-
-
-
-
 </style>
 <body>
 <div class="container">
@@ -74,9 +65,8 @@
         {% for dish in dish_list %}
 
         <div class="column">
-
             {% if dish.dish_logo.url != None %}
-            <img src="{{dish.dish_logo.url}}" height="200" width="200"/>
+            <!--<img src="{{dish.dish_logo.url}}" height="200" width="200"/>-->
             {% endif %}
 
             <p>Dish Name: {{dish.dish_name}}</p>
@@ -89,7 +79,8 @@
             <p>Rating: {{dish.dish_rating}}</p>
             <p>Description: {{dish.dish_desc}}</p>
 
-            <button type="button" id="btnPlus" class="btn btn-info">
+
+            <button type="button" id="btnAdd" class="btn btn-info" onclick="btnClick('{{dish.dish_id}}')">
                 <span class="glyphicon glyphicon-plus"/>
             </button>
             Add
@@ -97,28 +88,8 @@
                 <span class="glyphicon glyphicon-minus"/>
             </button>
 
-            <script>
-                var dish_name= "{{dish.dish_name}}"
-
-            </script>
             <script src="{% static 'hotel/js/rest.js' %}"></script>
 
-
-            <!--        <script>
-
-                    document.getElementById("btnMinus").style.display="hidden";
-            function increaseCounter()
-        {
-        &lt;!&ndash;alert("The paragraph was clicked.");&ndash;&gt;
-        document.getElementById("btnMinus").style.display='visible';
-        }
-
-
-        alert( $.cookie("name") );
-
-
-                    </script>
-        -->
         </div>
 
         {% endfor %}

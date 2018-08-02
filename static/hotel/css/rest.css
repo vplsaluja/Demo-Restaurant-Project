@@ -1,0 +1,34 @@
+* {
+    box-sizing: border-box;
+}
+
+.col-1 {
+    float: left;
+    overflow:hidden;
+    padding: 10px;
+}
+.col-2 {
+    float: center;
+    overflow:hidden;
+    padding: 30px;
+    background-color:#ccc;
+    <!--height: 300px; /* Should be removed. Only for demonstration */-->
+}
+
+
+.row:after {
+    content: "";
+    display: table;
+    background-color:#ccc;
+    clear: both;
+}
+
+.column {
+    float: left;
+    width: 30%;
+    overflow:hidden;
+    padding: 10px;
+    margin:10px;
+    background-color:#ccc;
+    <!--height: 300px; /* Should be removed. Only for demonstration */-->
+}
