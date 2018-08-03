@@ -1,24 +1,25 @@
 function btnClick(dishAdded)
 {
-    var cookieVal=[];
-    var cookie=getCookie("added_dish");
-    var data=document.cookie;
-    if(cookie==''){
-        cookieVal=[dishAdded];
-        document.cookie = "added_dish="+cookieVal;
-        console.log("first time size is="+cookieVal.length)
-       }
-    else{
-        var updatedArr=[]
-        cookieVal=getCookie("added_dish");
-        console.log("size is="+cookieVal.length)
-        for(i=0;i<cookieVal.length;i++){
-            console.log("before cookie at "+i+"is="+cookieVal[i])
-            updatedArr[cookieVal[i]]
+    if(dishAdded!=0){
+        var cookieVal=[];
+        var cookie=getCookie("added_dish");
+        var data=document.cookie;
+        if(cookie==''){
+            cookieVal.push(dishAdded);
         }
-        updatedArr.push(dishAdded);
-        for(i=0;i<cookieVal.length;i++)
-            console.log("after cookie at "+i+"is="+cookieVal[i])
+        else{
+            cookieVal=[];
+            var cookies=[getCookie("added_dish")];
+            console.log("size is="+cookies.length);
+            for(i=0;i<cookies.length;i++){
+                cookieVal.push(cookies[i]);
+            }
+            cookieVal.push(dishAdded);
+        }
+        document.cookie = "added_dish="+cookieVal+";path=/;";
+     }
+     else{
+        window.location.href="/cart";
      }
 }
 
@@ -26,7 +27,7 @@ function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
     var expires = "expires="+d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    document.cookie = cname + "=" + cvalue + ";" + expires + "; path=/;";
 }
 
 function getCookie(cname) {
@@ -55,5 +56,3 @@ function checkCookie() {
         }
     }
 }
-
-
