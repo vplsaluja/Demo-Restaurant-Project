@@ -21,6 +21,7 @@
 }
 .col-2 {
     float: center;
+    width:30%
     overflow:hidden;
     padding: 30px;
     background-color:#ccc;
@@ -45,19 +46,28 @@
     background-color:#0ff;
 }
 
-
 </style>
 
 <body>
 <div class="container">
+    {% for dish in selected_dish %}
     <div class="row">
-        {% for dish in selected_dish %}
-        <div class="col-2">
-            <h1>Name: {{dish.dish_name}}</h1>
-            <h1>Desc: {{dish.dish_desc}}</h1>
+        <div class="col-1">
+            <img src="{{dish.dish_logo.url}}" height="200" width="200"/>
         </div>
-        {% endfor %}
+        <div class="col-2">
+            <p>Name: {{dish.dish_name}}</p>
+            <p>Desc: {{dish.dish_desc}}</p>
+            {% if dish.is_veg == True %}
+            <p>Veg</p>
+            {% else %}
+            <p>Non Veg</p>
+            {% endif %}
+            <p>Price: &#8377 {{dish.dish_price}}</p>
+            {{ total|add:"10" }}
+        </div>
     </div>
+    {% endfor %}
 </div>
 </body>
 </html>
