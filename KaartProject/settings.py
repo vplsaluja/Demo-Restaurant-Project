@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app_hotel',
     'bootstrap4',
+    'mathfilters',
 ]
 
 MIDDLEWARE = [

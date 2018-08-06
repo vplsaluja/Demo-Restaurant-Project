@@ -46,6 +46,13 @@
     background-color:#0ff;
 }
 
+
+
+
+
+
+
+
 </style>
 
 <body>
@@ -53,7 +60,7 @@
     {% for dish in selected_dish %}
     <div class="row">
         <div class="col-1">
-            <img src="{{dish.dish_logo.url}}" height="200" width="200"/>
+            <!--<img src="{{dish.dish_logo.url}}" height="200" width="200"/>-->
         </div>
         <div class="col-2">
             <p>Name: {{dish.dish_name}}</p>
@@ -67,7 +74,13 @@
         </div>
     </div>
     {% endfor %}
-    <p>Total amount is: {{bill_amount}}</p>
+    <p>Item Total: {{bill_amount}}</p>
+
+    {% load mathfilters %}
+    <p>GST: {{ bill_amount|mul:0.05 }}</p>
+    <p>Bill Amount is:{{bill_amount|mul:0.05|addition:bill_amount}}</p>
+
+    <input type="button" value="Checkout" class="btn btn-primary" onclick=""/>
 </div>
 </body>
 </html>
