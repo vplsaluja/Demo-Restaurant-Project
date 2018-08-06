@@ -48,7 +48,6 @@
 
 
 
-
 </style>
 <body>
 <div class="container">
@@ -92,14 +91,27 @@
                 <span class="glyphicon glyphicon-minus"/>
             </button>
 
-            <script src="{% static 'hotel/js/rest.js' %}"></script>
+
+            <script src="{% static 'hotel/js/rest.js' %}">
+
+
+            </script>
 
         </div>
 
         {% endfor %}
 
     </div>
-    <input type="submit" onclick="btnClick('0')" class="btn btn-primary" value="Go To Cart" align="center"/>
+    <input type="submit" onclick="btnClick('0')" id="go_to_cart" class="btn btn-primary" value="Go To Cart"
+           align="center"/>
+    <script>
+                console.log("script log");
+                if(getCookie("added_dish")=='')
+                    {document.getElementById("go_to_cart").style.display="none";}
+                else
+                    {document.getElementById("go_to_cart").style.display="block";}
+
+    </script>
 </div>
 </body>
 </html>

@@ -64,10 +64,10 @@
             <p>Non Veg</p>
             {% endif %}
             <p>Price: &#8377 {{dish.dish_price}}</p>
-            {{ total|add:"10" }}
         </div>
     </div>
     {% endfor %}
+    <p>Total amount is: {{bill_amount}}</p>
 </div>
 </body>
 </html>

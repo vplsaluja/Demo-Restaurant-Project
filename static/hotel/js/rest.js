@@ -4,6 +4,7 @@ function btnClick(dishAdded)
         var cookieVal=[];
         var cookie=getCookie("added_dish");
         var data=document.cookie;
+        {document.getElementById("go_to_cart").style.display="block";}
         if(cookie==''){
             cookieVal.push(dishAdded);
         }

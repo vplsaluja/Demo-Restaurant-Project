@@ -31,7 +31,9 @@ def go_to_cart(request):
         cookies = request.COOKIES.get('added_dish')
         cookies = cookies.replace(',', '')
         selected_dish = list()
+        bill_amount = 0
         for i in cookies:
             dish = models.RestMenu.objects.get(dish_id=i)
             selected_dish.append(dish)
-    return render(request, 'cart.html', {'selected_dish': selected_dish, })
+            bill_amount = dish.dish_price + bill_amount
+    return render(request, 'cart.html', {'selected_dish': selected_dish, 'bill_amount': bill_amount, })
