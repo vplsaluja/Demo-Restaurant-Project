@@ -1,4 +1,5 @@
-from django.http import HttpResponse
+import json
+
 from django.shortcuts import render
 
 from . import models
@@ -27,13 +28,15 @@ def go_to_cart(request):
     if not request.COOKIES.get('added_dish'):
         print('cookie not found')
     else:
-        print("Cookie in dish is  {}".format(request.COOKIES.get('added_dish')))
-        cookies = request.COOKIES.get('added_dish')
-        cookies = cookies.replace(',', '')
+        cookies = json.loads(request.COOKIES.get('added_dish'))
         selected_dish = list()
         bill_amount = 0
-        for i in cookies:
-            dish = models.RestMenu.objects.get(dish_id=i)
+        for key, value in cookies.items():
+            dish = models.RestMenu.objects.get(dish_id=key)
             selected_dish.append(dish)
-            bill_amount = dish.dish_price + bill_amount
+            bill_amount = (dish.dish_price * value) + bill_amount
     return render(request, 'cart.html', {'selected_dish': selected_dish, 'bill_amount': bill_amount, })
+
+
+def order_placed(request):
+    return render(request, 'order_placed.html')

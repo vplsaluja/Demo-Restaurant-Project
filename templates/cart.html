@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -45,14 +46,6 @@
     margin:10px;
     background-color:#0ff;
 }
-
-
-
-
-
-
-
-
 </style>
 
 <body>
@@ -60,7 +53,7 @@
     {% for dish in selected_dish %}
     <div class="row">
         <div class="col-1">
-            <!--<img src="{{dish.dish_logo.url}}" height="200" width="200"/>-->
+            <img src="{{dish.dish_logo.url}}" height="200" width="200"/>
         </div>
         <div class="col-2">
             <p>Name: {{dish.dish_name}}</p>
@@ -80,7 +73,9 @@
     <p>GST: {{ bill_amount|mul:0.05 }}</p>
     <p>Bill Amount is:{{bill_amount|mul:0.05|addition:bill_amount}}</p>
 
-    <input type="button" value="Checkout" class="btn btn-primary" onclick=""/>
+    <input type="button" value="Checkout" class="btn btn-primary" onclick="onCheckoutClick()"/>
+    <script src="{% static 'hotel/js/rest.js' %}"></script>
+
 </div>
 </body>
 </html>

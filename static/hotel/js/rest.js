@@ -1,4 +1,5 @@
-function btnClick(dishAdded)
+
+/*function btnClick(dishAdded)
 {
     if(dishAdded!=0){
         var cookieVal=[];
@@ -22,7 +23,35 @@ function btnClick(dishAdded)
      else{
         window.location.href="/cart";
      }
+}*/
+
+function btnClick(dishAdded)
+{
+    if(dishAdded!=0){
+
+        var cookieVal=new Object();
+
+        var cookie=getCookie("added_dish");
+        {document.getElementById("go_to_cart").style.display="block";}
+        if(cookie==''||cookie==null){
+            cookieVal[dishAdded]=1;
+            document.cookie = "added_dish="+JSON.stringify(cookieVal)+";path=/;";
+        }
+        else{
+            cookieVal=JSON.parse(getCookie("added_dish"));
+            quantity=cookieVal[dishAdded];
+            if(quantity==undefined)
+                quantity=0;
+            cookieVal[dishAdded]=quantity+1;
+            document.cookie = "added_dish="+JSON.stringify(cookieVal)+";path=/;";
+        }
+
+     }
+     else{
+        window.location.href="/cart";
+     }
 }
+
 
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
@@ -40,7 +69,7 @@ function getCookie(cname) {
             c = c.substring(1);
         }
         if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
+            return (c.substring(name.length, c.length));
         }
     }
     return "";
@@ -56,4 +85,15 @@ function checkCookie() {
             setCookie("username", user, 365);
         }
     }
+}
+
+//set the past time to delete a cookie along with its path
+var delete_cookie = function(name) {
+    document.cookie = name + '=;Path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+};
+
+function onCheckoutClick()
+{
+    delete_cookie("added_dish");
+    window.location.href="/checkout";
 }
