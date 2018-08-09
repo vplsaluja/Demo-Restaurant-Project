@@ -46,6 +46,8 @@
     margin:10px;
     background-color:#0ff;
 }
+
+
 </style>
 
 <body>
@@ -53,7 +55,9 @@
     {% for dish in selected_dish %}
     <div class="row">
         <div class="col-1">
+            {% if dish.dish_logo.url != null %}
             <img src="{{dish.dish_logo.url}}" height="200" width="200"/>
+            {% endif %}
         </div>
         <div class="col-2">
             <p>Name: {{dish.dish_name}}</p>

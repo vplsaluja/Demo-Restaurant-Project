@@ -29,14 +29,19 @@ def go_to_cart(request):
         print('cookie not found')
     else:
         cookies = json.loads(request.COOKIES.get('added_dish'))
-        selected_dish = list()
         bill_amount = 0
-        for key, value in cookies.items():
-            dish = models.RestMenu.objects.get(dish_id=key)
-            selected_dish.append(dish)
-            bill_amount = (dish.dish_price * value) + bill_amount
+        selected_dish = models.RestMenu.objects.filter(pk__in=cookies.keys())
+        for dish in selected_dish:
+            bill_amount = (dish.dish_price * cookies[str(dish.dish_id)]) + bill_amount
+            request.session['bill_amount'] = bill_amount
     return render(request, 'cart.html', {'selected_dish': selected_dish, 'bill_amount': bill_amount, })
 
 
 def order_placed(request):
+    order = models.OrderPlaced.objects.create()
+    ordered_item = request.COOKIES.get('added_dish')
+    paid_amount = request.session.get('bill_amount')
+    order.amount_paid = paid_amount
+    order.list_order = ordered_item
+    order.save()
     return render(request, 'order_placed.html')

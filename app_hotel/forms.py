@@ -1,4 +1,5 @@
 from django.forms import ModelForm
+
 from . import models
 
 
@@ -18,3 +19,9 @@ class ReviewForm(ModelForm):
     class Meta:
         model = models.RestReviews
         fields = ('reviewed_rest', 'review_desc', 'rating_given')
+
+
+class OrderForm(ModelForm):
+    class Meta:
+        model = models.OrderPlaced
+        fields = ('list_order', 'amount_paid')

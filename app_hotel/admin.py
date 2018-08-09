@@ -5,3 +5,4 @@ from . import models
 admin.site.register(models.RestModel)
 admin.site.register(models.RestMenu)
 admin.site.register(models.RestReviews)
+admin.site.register(models.OrderPlaced)

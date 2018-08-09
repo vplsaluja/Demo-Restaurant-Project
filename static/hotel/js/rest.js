@@ -94,6 +94,6 @@ var delete_cookie = function(name) {
 
 function onCheckoutClick()
 {
-    delete_cookie("added_dish");
+//    delete_cookie("added_dish");
     window.location.href="/checkout";
 }

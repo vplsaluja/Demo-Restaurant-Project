@@ -30,3 +30,9 @@ class RestReviews(models.Model):
     review_id = models.AutoField(primary_key=True, auto_created=True)
     review_desc = models.CharField(blank=True, max_length=250)
     rating_given = models.FloatField(max_length=5, blank=False)
+
+
+class OrderPlaced(models.Model):
+    order_id = models.AutoField(primary_key=True, auto_created=True)
+    list_order = models.TextField(blank=True, default='')
+    amount_paid = models.FloatField(blank=True, default=0)
