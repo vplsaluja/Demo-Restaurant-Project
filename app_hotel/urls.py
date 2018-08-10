@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^restaurants/(?P<pk>[0-9]+)/$', views.restaurant_page, name='rest_page'),
     url(r'^cart/$', views.go_to_cart, name='go_to_cart'),
     url(r'^checkout/$', views.order_placed, name='order_placed'),
+    url(r'^order-summary/$', views.order_summary, name='order_summary'),
 ]
 
 # +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

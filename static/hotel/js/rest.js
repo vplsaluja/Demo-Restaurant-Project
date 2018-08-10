@@ -94,6 +94,17 @@ var delete_cookie = function(name) {
 
 function onCheckoutClick()
 {
-//    delete_cookie("added_dish");
     window.location.href="/checkout";
+}
+
+function order_summary()
+{
+    delete_cookie("added_dish");
+    window.location.href="/order-summary";
+}
+
+function go_to_home()
+{
+    console.log('clicking')
+    window.location.href="/restaurants";
 }

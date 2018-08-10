@@ -13,7 +13,22 @@
     <title>Order Placed</title>
 </head>
 <body>
-<h4>Your order has been placed!</h4>
+<h4>Order Placed-</h4>
+
+{% for order in orders%}
+
+<p>Order Id:{{order.order_id}}</p>
+{% for key,value in order_dict.items %}
+{% if key == order.order_id %}
+<h6><b>Dishes Ordered:</b></h6>
+{% for dish in value %}
+<p>{{dish.dish_name}}</p>
+{% endfor %}
+{% endif %}
+{% endfor %}
+<p>Amount Paid:{{order.amount_paid}}</p>
+<p>Created:{{order.created_date}}</p>
+{% endfor %}
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -27,7 +42,7 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 
-<input type="button" value="See all your orders" class="btn btn-primary" onclick="order_summary()"/>
+<input type="button" value="Go to Home" class="btn btn-primary" onclick="go_to_home()"/>
 <script src="{% static 'hotel/js/rest.js' %}"></script>
 </body>
 </html>

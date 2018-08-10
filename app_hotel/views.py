@@ -45,3 +45,15 @@ def order_placed(request):
     order.list_order = ordered_item
     order.save()
     return render(request, 'order_placed.html')
+
+
+def order_summary(request):
+    orders = models.OrderPlaced.objects.all()
+    order_dict = dict()
+    for order in orders:
+        ordered_dishes = json.loads(order.list_order)
+        dishes = models.RestMenu.objects.filter(pk__in=ordered_dishes.keys())
+        order_dict[order.order_id] = dishes
+
+    data = {'orders': orders, 'order_dict': order_dict, }
+    return render(request, 'order_summary.html', data)

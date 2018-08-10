@@ -36,3 +36,4 @@ class OrderPlaced(models.Model):
     order_id = models.AutoField(primary_key=True, auto_created=True)
     list_order = models.TextField(blank=True, default='')
     amount_paid = models.FloatField(blank=True, default=0)
+    created_date = models.DateTimeField(auto_now_add=True)
