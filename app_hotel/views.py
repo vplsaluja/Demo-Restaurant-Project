@@ -3,6 +3,7 @@ import json
 from django.shortcuts import render
 
 from . import models
+from . import forms
 
 
 def list_restaurants(request):
@@ -21,7 +22,7 @@ def restaurant_page(request, pk):
 
 
 def load_home(request):
-    return render(request, 'index.html')
+    return render(request, 'test_form.html')
 
 
 def go_to_cart(request):
@@ -57,3 +58,8 @@ def order_summary(request):
 
     data = {'orders': orders, 'order_dict': order_dict, }
     return render(request, 'order_summary.html', data)
+
+
+def rating_form(request):
+    review_form = forms.ReviewForm(request.POST)
+    return render(request, 'review_form.html', {'review_form': review_form, })

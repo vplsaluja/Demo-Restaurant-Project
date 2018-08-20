@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^cart/$', views.go_to_cart, name='go_to_cart'),
     url(r'^checkout/$', views.order_placed, name='order_placed'),
     url(r'^order-summary/$', views.order_summary, name='order_summary'),
+    url(r'^rating/$', views.rating_form, name='rating_form')
 ]
 
 # +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
